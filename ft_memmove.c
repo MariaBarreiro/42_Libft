@@ -31,7 +31,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -40,7 +40,9 @@ int	main()
 	unsigned char d[] = "Help please";
 	unsigned char s[] = "Hello World";
 	printf("src: %s\ndest: %s\n", s, d);
-	printf("ft_memmove: %s\n", ft_memcpy(d, s, 5));
-	printf("memmove: %s", memmove(d, s, 5));
+	ft_memmove(d, s, 5);
+	printf("ft_memmove: %s\n", d);
+	memmove(d, s, 5);
+	printf("memmove: %s", d);
 	return (0);
-}
+}*/
