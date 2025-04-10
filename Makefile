@@ -28,7 +28,10 @@ FILES						+= ft_strlen.c
 FILES						+= ft_strrchr.c
 FILES						+= ft_tolower.c
 FILES						+= ft_toupper.c
-FILES						+= 
+FILES						+= ft_memchr.c
+FILES						+= ft_strncmp.c 
+FILES						+= ft_memcmp.c
+FILES						+= ft_strnstr.c
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
