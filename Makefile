@@ -14,14 +14,21 @@ SRC_PATH        = .
 INC_PATH        = .
 BUILD_PATH  	= .build
 
-#FILES           = ft_isalpha.c
-#FILES           += ft_strlen.c
-FILES           = *.c
-#FILES           = ft_putchar.c 
-#FILES           += ft_putstr.c
-#FILES 			+= ft_strcmp.c 
-#FILES 			+= ft_strlen.c
-#FILES 			+= ft_swap.c
+FILES           = ft_bzero.c
+FILES           += ft_isalnum.c
+FILES           += ft_isalpha.c 
+FILES           += ft_isascii.c
+FILES						+= ft_isdigit.c 
+FILES						+= ft_isprint.c
+FILES						+= ft_memcpy.c
+FILES						+= ft_memmove.c
+FILES						+= ft_memset.c
+FILES						+= ft_strchr.c
+FILES						+= ft_strlen.c
+FILES						+= ft_strrchr.c
+FILES						+= ft_tolower.c
+FILES						+= ft_toupper.c
+FILES						+= 
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
@@ -58,7 +65,7 @@ so:
 	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 clean:
-	    $(RM) $(OBJS)
+	    $(RM) $(BUILD_PATH)
 
 fclean: clean
 	 $(RM) $(NAME)
