@@ -1,49 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 12:10:48 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/04/11 12:59:22 by mda-enca         ###   ########.fr       */
+/*   Created: 2025/04/09 11:12:55 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/04/09 11:14:26 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_bzero(void *s, size_t n)
 {
+	char	*str;
 	size_t	i;
-	int		result;
-	int		sign;
 
+	str = (char *)s;
 	i = 0;
-	result = 0;
-	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	while (i < n)
 	{
-		if (nptr[i] == '-')
-			sign = -sign;
+		str[i] = '\0';
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = (result * 10) + (nptr[i] - '0');
-		i++;
-	}
-	return (sign * result);
 }
 /*
-#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
 int	main()
 {
-	const char nptr[] = "126sdahsgd";
-	printf("ft_atoi: %d\n", ft_atoi(nptr));
-	printf("atoi: %d\n", atoi(nptr));
+	char str[] = "Hello World";
+	ft_bzero(str, 5);
+	bzero(str, 5);
+	printf("ft_bzero: %s\n", str);
+	printf("bzero: %s", str);
 	return (0);
 }*/

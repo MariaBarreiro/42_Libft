@@ -15,7 +15,7 @@
 ///s: the original string from which to create the substring;
 ///start: the starting index of the substring withing 's';
 ///len: the maximum length of the substring;
-///Return: SUCCESS: pointer to the substring;
+///RETURN: SUCCESS: pointer to the substring;
 ///RETURN: FAILURE: null;
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > (k - start))
 		len = k - start;
-	sub = (char *)malloc(k * sizeof(char));
+	sub = (char *)malloc((k + 1) * sizeof(char));
 	if (!sub)
 		return (0);
 	while (s[j] && i < len)

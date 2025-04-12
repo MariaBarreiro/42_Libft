@@ -12,7 +12,7 @@ NAME = libft.a
 # **************************************************************************** #
 SRC_PATH        = .
 INC_PATH        = .
-BUILD_PATH  	= .build
+BUILD_PATH			= .build
 
 FILES           = ft_bzero.c
 FILES           += ft_isalnum.c
@@ -37,6 +37,8 @@ FILES						+= ft_atoi.c
 FILES						+= ft_calloc.c
 FILES						+= ft_strdup.c
 FILES						+= ft_substr.c
+FILES						+= ft_strjoin.c
+FILES						+= ft_strtrim.c
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
