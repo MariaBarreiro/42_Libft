@@ -39,6 +39,7 @@ FILES						+= ft_strdup.c
 FILES						+= ft_substr.c
 FILES						+= ft_strjoin.c
 FILES						+= ft_strtrim.c
+FILES						+= ft_split.c
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
