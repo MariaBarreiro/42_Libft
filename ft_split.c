@@ -32,6 +32,8 @@ char	**ft_split(char const *s, char c)
 	word = 0;
 	counter = ft_counter(s, c);
 	split = (char **)malloc((counter + 1) * sizeof(char *));
+	if (!split)
+		return(0);
 	while (s[i])
 	{
 		while (s[i] == c)
@@ -71,7 +73,7 @@ size_t	ft_counter(const char *s, char c)
 
 int	main()
 {
-	char const s[] = "\0";
+	char const s[] = "+42+Porto+";
 	char c = '+';
 	char **result = ft_split(s, c);
 	size_t i = 0;
