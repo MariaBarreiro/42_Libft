@@ -21,7 +21,6 @@ size_t	ft_counter(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	size_t		counter;
 	size_t		start;
 	size_t		i;
 	size_t		word;
@@ -30,10 +29,9 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	i = 0;
 	word = 0;
-	counter = ft_counter(s, c);
-	split = (char **)malloc((counter + 1) * sizeof(char *));
-	if (!split)
-		return(0);
+	split = (char **)malloc((ft_counter(s, c) + 1) * sizeof(char *));
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		while (s[i] == c)
