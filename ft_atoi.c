@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 ///ft_atoi: Converts the initial portion of the str pointed to by nptr to int;
 ///const char *nptr: Str to convert;
@@ -44,10 +44,48 @@ int	ft_atoi(const char *nptr)
 #include <stdlib.h>
 #include <stdio.h>
 
-int	main()
+int main(void)
 {
-	const char nptr[] = "126sdahsgd";
-	printf("ft_atoi: %d\n", ft_atoi(nptr));
-	printf("atoi: %d\n", atoi(nptr));
-	return (0);
-}*/
+	const char *tests[] = {
+		"0",
+		"42",
+		"-42",
+		"+42",
+		"   \t\n\r\v\f123",
+		"   -987",
+		"  +00123",
+		"123abc",          // Stops parsing at non-digit
+		"-+42",            // Invalid, sign error
+		"--42",            // Invalid, sign error
+		"",                // Empty string
+		"    ",            // Only spaces
+		"  - 42",          // Invalid format
+		"+-123",           // Invalid format
+		"2147483647",      // INT_MAX
+		"-2147483648",     // INT_MIN
+		"2147483648",      // Overflow
+		"-2147483649",     // Underflow
+		"0000000000000042", // Leading zeroes
+		"   +000000",       // Just zero with signs
+		"\t\n\v\f\r -42",
+	};
+
+	int count = sizeof(tests) / sizeof(tests[0]);
+	int i = 0;
+	while (i < count)
+	{
+		int ft = ft_atoi(tests[i]);
+		int std = atoi(tests[i]);
+		printf("[%02d] Input: \"%s\"\n", i + 1, tests[i]);
+		printf("     ft_atoi: %d\n", ft);
+		printf("     atoi:    %d\n", std);
+		if (ft != std)
+			printf("   --> ❌ MISMATCH\n");
+		else
+			printf("   --> ✅ MATCH\n");
+		printf("--------------------------------------\n");
+		i++;
+	}
+	return 0;
+}
+*/
