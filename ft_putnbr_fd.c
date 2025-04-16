@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 15:02:58 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/04/08 15:05:06 by mda-enca         ###   ########.fr       */
+/*   Created: 2025/04/16 07:21:20 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/04/16 07:36:07 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-///ft_isalpha: Check if char is alphabetic;
-///int c: char to check;
-///RETURN: SUCCESS: c:
-///RETURN: FAILURE: 0;
+///ft_putnbr_fd: Outputs the int 'n' to the specified file descriptor;
+///int n: Integer to output;
+///int fd: File descriptor on which to write:
 
-int	ft_isalpha(int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	long int	nb;
+
+	nb = n;
+	if (nb < 0)
+	{
+		write (fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr_fd ((nb / 10), fd);
+		ft_putnbr_fd((nb % 10), fd);
+	}
+	else
+	{
+		nb += '0';
+		write (fd, &nb, 1);
+	}
 }
 /*
-#include <ctype.h>
-#include <stdio.h>
-
 int	main()
 {
-	int c = 'a';
-	printf("ft_isalpha: %d\n", ft_isalpha(c));
-	printf("isalpha: %d", isalpha(c));
+	int	n = -2147483647;
+	int fd = 1;
+	ft_putnbr_fd(n, fd);
 	return (0);
-}/*/
+}*/

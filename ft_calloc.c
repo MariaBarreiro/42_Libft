@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
+
+///ft_calloc: Alloc memory for an arrat of nmemb size bytes each;
+///size_t nmemb: Number of elements;
+///size_t size: Size of each element;
+///RETURN: SUCESS: Pointer to the allocated memory;
+///RETURN: FAILURE: Null;
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

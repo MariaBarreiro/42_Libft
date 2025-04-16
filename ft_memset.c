@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+///ft_memset: Sets the first n bytes of the memory area point to by s to c;
+///void *s: Pointer to the memory area;
+///int c: Char to be set;
+///size_t n: Number of bytes to be set;
+///RETURN: SUCCESS: s
+
 void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*str;

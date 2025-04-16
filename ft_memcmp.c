@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+///ft_memcmp: Compares the first n bytes of s1 and s2;
+///const void *s1: Pointer to the first memory area;
+///const void *s2: Pointer to the second memory area;
+///size_t n: Maximum number of bytes to search for;
+///RETURN: SUCCESS: Pointer to the first occurrence of c in s;
+///RETURN: FAILURE: 0;
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*p;

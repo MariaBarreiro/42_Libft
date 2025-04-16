@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+///ft_memcpy: Copies n bytes from memory area src to memory area dest;
+///void *dest: POunter to the destination memory area;
+///const void *src: POinter to the source memory area;
+///size_t n: Number of bytes to be copied;
+///RETURN: SUCCESS: Dest;
+///RETURN: FAILURE: Null;
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*d;

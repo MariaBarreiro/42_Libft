@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+///ft_isprint: Checks if char c is printable;
+///int c: Char to check;
+///RETURN: SUCCESS: c;
+///RETURN: FAILURE: 0;
+
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)

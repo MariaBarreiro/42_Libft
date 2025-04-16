@@ -40,6 +40,13 @@ FILES						+= ft_substr.c
 FILES						+= ft_strjoin.c
 FILES						+= ft_strtrim.c
 FILES						+= ft_split.c
+FILES						+= ft_itoa.c
+FILES						+= ft_strmapi.c
+FILES						+= ft_striteri.c
+FILES						+= ft_putchar_fd.c
+FILES						+= ft_putstr_fd.c
+FILES						+= ft_putendl_fd.c
+FILES						+= ft_putnbr_fd.c
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
@@ -70,10 +77,6 @@ $(BUILD_PATH):
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 clean:
 	    $(RM) $(BUILD_PATH)

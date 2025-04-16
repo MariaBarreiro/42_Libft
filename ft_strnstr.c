@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+///ft_strnstr: Search for first occurence of a substring;
+///const char *big: Pointer to the string to be searched;
+///const char *little: Pointer to the string to search for;
+///size_t len: Length of the string;
+///RETURN: SUCCESS: Pointer to the substring;
+///RETURN: FAILURE: Null;
+
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;

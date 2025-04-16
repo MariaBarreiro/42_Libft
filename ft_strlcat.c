@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+///ft_strlcat: Appends size bytes from src to the dest;
+///char *dst: Pointer to the destination str;
+///const char *src: Pointer to the source str;
+///size_t size: Number of byter to append;
+///RETURN: SUCCESS: Number of bytes written;
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;

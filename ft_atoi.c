@@ -12,6 +12,10 @@
 
 #include "../includes/libft.h"
 
+///ft_atoi: Converts the initial portion of the str pointed to by nptr to int;
+///const char *nptr: Str to convert;
+///RETURN: SUCCESS: Converted value;
+
 int	ft_atoi(const char *nptr)
 {
 	size_t	i;

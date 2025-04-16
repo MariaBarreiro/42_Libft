@@ -66,7 +66,7 @@ size_t	ft_counter(const char *s, char c)
 	}
 	return (word_count);
 }
-/*
+
 #include <stdio.h>
 
 int	main()
@@ -78,6 +78,7 @@ int	main()
 
 	while(result[i])
 		printf("%s\n", result[i++]);
-//	free();
+	i = 0;
+	free(result);
 	return (0);
-}*/
+}
