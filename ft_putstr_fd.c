@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+///ft_putstr_fd: Outputs the str 's' to the specified file descriptor;
+//char *s: String to output;
+//int fd: File descriptor on which to write;
+
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;

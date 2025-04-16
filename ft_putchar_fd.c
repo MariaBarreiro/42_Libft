@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+///ft_putchar_fd: Outputs the char 'c' to the specified file descriptor;
+///char c: Char to output;
+///int fd: File descriptor on which to write;
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write (fd, &c, 1);
@@ -22,4 +26,5 @@ int	main()
 	char c = 'c'; 
 	int fd = 1;
 	ft_putchar_fd(c, fd);
+	return (0);
 }*/
