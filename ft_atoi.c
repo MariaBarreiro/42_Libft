@@ -76,16 +76,10 @@ int main(void)
 	{
 		int ft = ft_atoi(tests[i]);
 		int std = atoi(tests[i]);
-		printf("[%02d] Input: \"%s\"\n", i + 1, tests[i]);
-		printf("     ft_atoi: %d\n", ft);
-		printf("     atoi:    %d\n", std);
-		if (ft != std)
-			printf("   --> ❌ MISMATCH\n");
-		else
-			printf("   --> ✅ MATCH\n");
+		printf("ft_atoi: %d\n", ft);
+		printf("atoi:    %d\n", std);
 		printf("--------------------------------------\n");
 		i++;
 	}
 	return 0;
-}
-*/
+}*/
