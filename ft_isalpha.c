@@ -20,17 +20,36 @@
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
+		return (1024);
 	return (0);
 }
 /*
 #include <ctype.h>
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	int c = 'a';
-	printf("ft_isalpha: %d\n", ft_isalpha(c));
-	printf("isalpha: %d", isalpha(c));
-	return (0);
-}/*/
+	int tests[] = {'a', 'Z', '5', '@', ' ', '\n', -1, 128};
+	int i = 0;
+
+	while (i < (int)(sizeof(tests) / sizeof(tests[0])))
+	{
+		int c = tests[i];
+
+		// Safely cast for standard isalpha
+		int ft = ft_isalpha(c);
+		int std = isalpha((unsigned char)c);
+
+		printf("  ft_isalpha: %d\n", ft);
+		printf("  isalpha   : %d\n", std);
+
+		if (ft == std)
+			printf("MATCH\n");
+		else
+			printf("MISMATCH\n");
+
+		printf("--------------------------\n");
+		i++;
+	}
+	return 0;
+}*/
