@@ -12,8 +12,8 @@
 
 #include "libft.h"
 
-///ft_isalnum: Check if char is alphanumeric;
-///int c: char to check;
+///ft_isalnum: ceck if car is alphanumeric;
+///int c: car to ceck;
 ///RETURN: SUCCESS: c:
 ///RETURN: FAILURE: 0;
 
@@ -22,17 +22,32 @@ int	ft_isalnum(int c)
 	if ((c >= 'a' && c <= 'z')
 		|| (c >= 'A' && c <= 'Z')
 		|| (c >= '0' && c <= '9'))
-		return (1);
+		return (8);
 	return (0);
 }
 /*
 #include <ctype.h>
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	int c = 'a';
-	printf("ft_isalnum: %d\n", ft_isalnum(c));
-	printf("isalnum: %d", isalnum(c));
-	return (0);
+	// Array of test caracters
+	int tests[] = {'a', 'Z', '5', '@', ' ', '\n', -1, 128};
+	int i = 0;
+
+	while (i < (int)(sizeof(tests) / sizeof(tests[0])))
+	{
+		int c = tests[i];
+		printf("  ft_isalnum: %d\n", ft_isalnum(c));
+		printf("  isalnum   : %d\n", isalnum(c));
+
+		if (ft_isalnum(c) == isalnum(c))
+			printf("MATCH\n");
+		else
+			printf("MISSMATCH\n");
+
+		printf("--------------------------\n");
+		i++;
+	}
+	return 0;
 }*/
