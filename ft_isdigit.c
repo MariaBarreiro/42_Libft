@@ -20,17 +20,36 @@
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (1);
+		return (2048);
 	return (0);
 }
 /*
 #include <ctype.h>
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	int c = '9';
-	printf("ft_isdigit: %d\n", ft_isdigit(c));
-	printf("isdigit: %d", isdigit(c));
-	return (0);
+	int tests[] = {'0', '5', '9', 'a', '/', ':', ' ', '\n', -1, 128, 255};
+	int i = 0;
+
+	while (i < (int)(sizeof(tests) / sizeof(tests[0])))
+	{
+		int c = tests[i];
+
+		// Safe comparison
+		int ft = ft_isdigit(c);
+		int std = isdigit((unsigned char)c);
+
+		printf("  ft_isdigit: %d\n", ft);
+		printf("  isdigit   : %d\n", std);
+
+		if (ft == std)
+			printf("MATCH\n");
+		else
+			printf("MISMATCH\n");
+
+		printf("--------------------------\n");
+		i++;
+	}
+	return 0;
 }*/
