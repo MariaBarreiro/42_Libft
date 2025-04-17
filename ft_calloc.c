@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-///ft_calloc: Alloc memory for an arrat of nmemb size bytes each;
+///ft_calloc: Alloc memory for an array of nmemb size bytes each and zero it;
 ///size_t nmemb: Number of elements;
 ///size_t size: Size of each element;
 ///RETURN: SUCESS: Pointer to the allocated memory;
@@ -36,17 +36,46 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (array);
 }
 /*
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int	main()
+int	main(void)
 {
 	size_t	nmemb = 4;
 	size_t	size = sizeof(int);
-	void	*ptr = malloc(nmemb * size);
-	printf("%p\n", &ptr);
-	printf("%s\n", (char *)ptr);
-	printf("ft_calloc: %s\n", (char *)ft_calloc(nmemb, size));
-	printf("calloc: %s\n", (char *)calloc(nmemb, size));
-	return (0);
+
+	// Use ft_calloc and standard calloc
+	void *ptr1 = ft_calloc(nmemb, size);
+	void *ptr2 = calloc(nmemb, size);
+
+	// Check if allocation succeeded
+	if (!ptr1 || !ptr2)
+	{
+		printf("Allocation failed\n");
+		return (1);
+	}
+
+	// Print first few bytes to verify zero-initialization
+	printf("ft_calloc bytes: ");
+	for (size_t i = 0; i < nmemb * size; i++)
+		printf("%02x ", ((unsigned char *)ptr1)[i]);
+	printf("\n");
+
+	printf("calloc    bytes: ");
+	for (size_t i = 0; i < nmemb * size; i++)
+		printf("%02x ", ((unsigned char *)ptr2)[i]);
+	printf("\n");
+
+	// Compare the two allocations
+	if (memcmp(ptr1, ptr2, nmemb * size) == 0)
+		printf("MATCH: Memory is zeroed and identical\n");
+	else
+		printf("MISMATCH: Memory is different\n");
+
+	// Free the memory to avoid leaks
+	free(ptr1);
+	free(ptr2);
+
+	return 0;
 }*/
