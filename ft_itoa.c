@@ -23,7 +23,7 @@ unsigned int	ft_countdigits(int n);
 
 char	*ft_itoa(int n)
 {
-	unsigned int	nb;
+	long			nb;
 	long int		len;
 	char			*str;
 
@@ -47,21 +47,13 @@ char	*ft_itoa(int n)
 unsigned int	ft_countdigits(int n)
 {
 	unsigned int	len;
-	unsigned int	nb;
 
 	len = 0;
-	if (n == 0)
+	if (n <= 0)
 		len = 1;
-	if (n < 0)
+	while (n)
 	{
-		len = 1;
-		nb = -n;
-	}
-	else
-		nb = n;
-	while (nb > 0)
-	{
-		nb /= 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
@@ -79,9 +71,30 @@ char	*ft_char(char *str, unsigned int nb, long int len)
 /*
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	int	n = 42;
-	printf("ft_itoa: %s\n", ft_itoa(n));
-	return (0);
+	int	tests[] = {
+		0,
+		1,
+		-1,
+		42,
+		-42,
+		123456,
+		-123456,
+		2147483647,    // INT_MAX
+		-2147483648    // INT_MIN
+	};
+	int	count = sizeof(tests) / sizeof(tests[0]);
+	int	i = 0;
+
+	while (i < count)
+	{
+		int n = tests[i];
+		char *result = ft_itoa(n);
+		printf("  ft_itoa: %s\n", result ? result : "NULL");
+		printf("--------------------------\n");
+		free(result); // make sure to free!
+		i++;
+	}
+	return 0;
 }*/
