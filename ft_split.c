@@ -66,19 +66,30 @@ size_t	ft_counter(const char *s, char c)
 	}
 	return (word_count);
 }
-
+/*
 #include <stdio.h>
+#include <ctype.h>
 
-int	main()
+int	main(void)
 {
-	char const s[] = "+42+Porto+";
-	char c = '+';
-	char **result = ft_split(s, c);
-	size_t i = 0;
+	const char *input = "  hello   world  this is 42 ";
+	char delim = ' ';
+	char **result = ft_split(input, delim);
 
-	while(result[i])
-		printf("%s\n", result[i++]);
+	// Print each word in the result
+	int i = 0;
+	while (result && result[i])
+	{
+		printf("  [%d]: \"%s\"\n", i, result[i]);
+		i++;
+	}
+	printf("  [%d]: NULL\n", i); // Confirm the array ends with NULL
+
+	// Free the allocated memory
 	i = 0;
+	while (result && result[i])
+		free(result[i++]);
 	free(result);
-	return (0);
-}
+
+	return 0;
+}*/
