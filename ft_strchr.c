@@ -34,15 +34,27 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)(s + i));
 	return (0);
 }
-/*
+
 #include <string.h>
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	const char str[] = "42Porto";
-	int	c = 'o';
-	printf("ft_strchr: %s\n", ft_strchr(str, c));
-	printf("strchr: %s", strchr(str, c));
-	return (0);
-}*/
+	const char *input = "42Porto";
+	int to_find = 'o'; // You can change this to test other characters
+
+	char *ft_result = ft_strchr(input, to_find);
+	char *libc_result = strchr(input, to_find);
+
+	printf("ft_strchr : %s\n", ft_result ? ft_result : "NULL");
+	printf("strchr    : %s\n", libc_result ? libc_result : "NULL");
+
+	if (ft_result == libc_result)
+		printf("MATCH (same pointer)\n");
+	else if (ft_result && libc_result && strcmp(ft_result, libc_result) == 0)
+		printf("MATCH (same string content)\n");
+	else
+		printf("MISMATCH\n");
+
+	return 0;
+}
