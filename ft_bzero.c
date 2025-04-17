@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 ///ft_bzero: Sets the first n bytes of the memory area pointed to by s to 0;
 ///void *s: Memory area;
@@ -30,15 +30,34 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 /*
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
-int	main()
+int	main(void)
 {
-	char str[] = "Hello World";
-	ft_bzero(str, 5);
-	bzero(str, 5);
-	printf("ft_bzero: %s\n", str);
-	printf("bzero: %s", str);
-	return (0);
+    ///two identical arrays/buffers with the same str
+	char buffer1[16] = "Hello World!";
+	char buffer2[16] = "Hello World!";
+	size_t n = 5;
+
+	ft_bzero(buffer1, n);
+	bzero(buffer2, n);
+
+    ///print in hexadeximal format to be able to the the null bytes
+    printf("ft_bzero result: ");
+	for (size_t i = 0; i < 12; i++)
+		printf("%02x ", (unsigned char)buffer1[i]);
+	printf("\n");
+
+	printf("bzero    result: ");
+	for (size_t i = 0; i < 12; i++)
+		printf("%02x ", (unsigned char)buffer2[i]);
+	printf("\n");
+
+	if (memcmp(buffer1, buffer2, 12) == 0)
+		printf("MATCH\n");
+	else
+		printf("MISMATCH\n");
+
+	return 0;
 }*/
