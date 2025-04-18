@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:38:28 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/04/11 15:49:59 by mda-enca         ###   ########.fr       */
+/*   Created: 2025/04/18 08:53:29 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/04/18 08:53:31 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-///ft_strdup: Duplicate a string;
-///const char *s: Pointer to a string;
-///RETURN: SUCCESS: Pointer to the duplicated string;
-///RETURN: FAILURE: Null;
+///ft_strdup: duplicate a string;
+///const char *s: pointer to a string;
+///return: success: pointer to the duplicated string;
+///return: failure: null;
 
 char	*ft_strdup(const char *s)
 {
@@ -40,16 +40,43 @@ char	*ft_strdup(const char *s)
 #include <string.h>
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	char s[] = "";
-	char *ft = ft_strdup(s);
-	char *og = strdup(s);
+	const char *tests[] = {
+		"",
+		"42",
+		"Hello, world!",
+		"   lots   of   space   ",
+		"String with symbols! @#$%^&*()",
+		"This is a longer string to test duplication.",
+	};
+	int total = sizeof(tests) / sizeof(tests[0]);
+	int i = 0;
 
-	printf("ft_strdup: %s\n", ft);
-	printf("strdup: %s\n", og);
+	while (i < total)
+	{
+		const char *src = tests[i];
+		char *ft = ft_strdup(src);
+		char *og = strdup(src);
 
-	free(ft);
-	free(og);
-	return (0);
+		printf("ft_strdup: \"%s\"\n", ft);
+		printf("strdup   : \"%s\"\n", og);
+
+		if (ft != NULL && og != NULL && strcmp(ft, og) == 0)
+			printf("MATCH\n");
+		else
+			printf("MISMATCH\n");
+
+		if (ft == og)
+			printf("Same pointer\n");
+		else
+			printf("Different memory locations\n");
+
+		free(ft);
+		free(og);
+
+		printf("----------------------------------\n");
+		i++;
+	}
+	return 0;
 }*/
