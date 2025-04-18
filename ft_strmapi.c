@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:40:21 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/04/15 17:38:39 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/04/18 10:32:32 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t		len;
 	size_t		i;
 
-	len = ft_strlen(s);
-	i = 0;
 	if (!s || !f)
 		return (NULL);
+	len = ft_strlen(s);
+	i = 0;
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (0);
@@ -52,10 +52,44 @@ char	ft_to_upper(unsigned int i, char c)
 
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
-	char const	s[] = "abcd";
-	char *ft_mapi = ft_strmapi(s, &ft_to_upper);
-	printf("ft_strmapi: %s\n",ft_mapi); 
-	return (0);
+	// ---------- Test 1: normal lowercase string ----------
+	const char *str1 = "hello";
+	char *res1 = ft_strmapi(str1, ft_to_upper);
+	printf("Input       : \"%s\"\n", str1);
+	printf("ft_strmapi  : \"%s\"\n", res1);
+	free(res1);
+	printf("----------------------------------\n");
+
+	// ---------- Test 2: empty string ----------
+	const char *str2 = "";
+	char *res2 = ft_strmapi(str2, ft_to_upper);
+	printf("Input       : \"%s\"\n", str2);
+	printf("ft_strmapi  : \"%s\"\n", res2);
+	free(res2);
+	printf("----------------------------------\n");
+
+	// ---------- Test 3: string with non-letter characters ----------
+	const char *str3 = "123!@# abc";
+	char *res3 = ft_strmapi(str3, ft_to_upper);
+	printf("Input       : \"%s\"\n", str3);
+	printf("ft_strmapi  : \"%s\"\n", res3);
+	free(res3);
+	printf("----------------------------------\n");
+
+	// ---------- Test 4: NULL string ----------
+	const char *str4 = NULL;
+	char *res4 = ft_strmapi(str4, ft_to_upper);
+	printf("Input       : NULL\n");
+	if (res4 == NULL)
+		printf("ft_strmapi  : NULL \n");
+	else
+	{
+		printf("ft_strmapi  : \"%s\"\n", res4);
+		free(res4);
+	}
+	printf("----------------------------------\n");
+
+	return 0;
 }*/
