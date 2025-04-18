@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:39:12 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/04/18 09:46:08 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/04/18 10:30:04 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+/*
 #include <string.h>
 #include <stdio.h>
 
@@ -81,4 +82,4 @@ int	main(void)
 	printf("----------------------------------\n");
 
 	return 0;
-}
+}*/
