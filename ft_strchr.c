@@ -34,27 +34,69 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)(s + i));
 	return (0);
 }
-
+/*
 #include <string.h>
 #include <stdio.h>
 
 int	main(void)
 {
-	const char *input = "42Porto";
-	int to_find = 'o'; // You can change this to test other characters
+	const char *inputs[] = {
+		"42Porto",
+		"hello",
+		"abcdef",
+		"",
+		"abcabcabc",
+		"string\0test"
+	};
 
-	char *ft_result = ft_strchr(input, to_find);
-	char *libc_result = strchr(input, to_find);
+	int chars[] = {
+		'4',    // at beginning
+		'o',    // in middle
+		'\0',   // null terminator
+		'x',    // not found
+		'a',    // multiple matches
+		't'     // at end
+	};
 
-	printf("ft_strchr : %s\n", ft_result ? ft_result : "NULL");
-	printf("strchr    : %s\n", libc_result ? libc_result : "NULL");
+	int num_inputs = sizeof(inputs) / sizeof(inputs[0]);
+	int num_chars = sizeof(chars) / sizeof(chars[0]);
 
-	if (ft_result == libc_result)
-		printf("MATCH (same pointer)\n");
-	else if (ft_result && libc_result && strcmp(ft_result, libc_result) == 0)
-		printf("MATCH (same string content)\n");
-	else
-		printf("MISMATCH\n");
+	for (int i = 0; i < num_inputs; i++)
+	{
+		for (int j = 0; j < num_chars; j++)
+		{
+			const char *str = inputs[i];
+			int c = chars[j];
 
+			char *ft_res = ft_strchr(str, c);
+			char *std_res = strchr(str, c);
+
+			if (ft_res != NULL)
+				printf("ft_strchr : \"%s\"\n", ft_res);
+			else
+				printf("ft_strchr : NULL\n");
+
+			if (std_res != NULL)
+				printf("strchr    : \"%s\"\n", std_res);
+			else
+				printf("strchr    : NULL\n");
+
+			if (ft_res == std_res)
+			{
+				printf("MATCH\n");
+			}
+			else if (ft_res != NULL && std_res != NULL
+					&& strcmp(ft_res, std_res) == 0)
+			{
+				printf("MATCH\n");
+			}
+			else
+			{
+				printf("MISMATCH\n");
+			}
+
+			printf("----------------------------------\n");
+		}
+	}
 	return 0;
-}
+}*/
