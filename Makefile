@@ -12,7 +12,7 @@ NAME = libft.a
 # **************************************************************************** #
 SRC_PATH        = .
 INC_PATH        = .
-BUILD_PATH			= .build
+#######BUILD_PATH			= .build
 
 FILES           = ft_bzero.c
 FILES           += ft_isalnum.c
@@ -33,6 +33,7 @@ FILES						+= ft_strncmp.c
 FILES						+= ft_memcmp.c
 FILES						+= ft_strnstr.c
 FILES						+= ft_strlcat.c
+FILES						+= ft_strlcpy.c
 FILES						+= ft_atoi.c
 FILES						+= ft_calloc.c
 FILES						+= ft_strdup.c
@@ -49,7 +50,7 @@ FILES						+= ft_putendl_fd.c
 FILES						+= ft_putnbr_fd.c
 
 SRC             = $(addprefix $(SRC_PATH)/, $(FILES))
-OBJS            = $(SRC: $(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
+OBJS            = $(SRC:%.c=%.o)
 
 # **************************************************************************** #
 #                                   Compiler                                   #
@@ -72,14 +73,11 @@ all: $(BUILD_PATH) $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-$(BUILD_PATH):
-	   	$(MKDIR) $(BUILD_PATH)
-
-$(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	    $(RM) $(BUILD_PATH)
+	    $(RM) $(OBJS)
 
 fclean: clean
 	 $(RM) $(NAME)

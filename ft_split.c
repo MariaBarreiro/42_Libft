@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 size_t	ft_counter(const char *s, char c);
-
+char	**ft_alloc_split(const char *s, char c);
+size_t ft_count(char const *s, int *start, size_t i, char c);
+void	free_split(char **split, size_t filled);
 ///s: String to be split;
 ///c: Delimiter character/substrings NOT equal to c but separated by it;
 ///RETURN: SUCCESS: Array of new strings resulting from the split;
@@ -21,30 +24,53 @@ size_t	ft_counter(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	size_t		start;
+	int		start;
 	size_t		i;
 	size_t		word;
 	char		**split;
 
-	start = 0;
 	i = 0;
 	word = 0;
-	split = (char **)malloc((ft_counter(s, c) + 1) * sizeof(char *));
 	if (!s)
 		return (0);
+	split = ft_alloc_split(s, c);
+	if (!split)
+		return(0);
 	while (s[i])
 	{
+		if (s[i])
+		{
+			i = ft_count(s, &start, i, c);
+			if (s[i] == '\0' && start == -1 )
+				break ;
+			split[word++] = ft_substr(s, start, (i - start));
+			start = -1;
+		}
+	}
+	split[word] = NULL;
+	return (split);
+}
+
+size_t ft_count(char const *s, int *start, size_t i, char c) {
+		*start = -1;
 		while (s[i] == c)
 			i++;
 		if (s[i])
 		{
-			start = i;
-			while (s[i] && s[i] != c)
+			*start = i;
+			while (s[i] && (s[i] != c))
 				i++;
-			split[word++] = ft_substr(s, start, (i - start));
 		}
-	}
-	split[word] = NULL;
+	return (i);
+}
+
+char	**ft_alloc_split(const char *s, char c)
+{
+	char	**split;
+	size_t	count;
+
+	count = ft_counter(s, c);
+	split = (char **)malloc((count + 1) * sizeof(char *));
 	return (split);
 }
 
@@ -66,13 +92,24 @@ size_t	ft_counter(const char *s, char c)
 	}
 	return (word_count);
 }
+
+void	free_split(char **split, size_t filled)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < filled)
+		free(split[i++]);
+	free(split);
+}
+
 /*
 #include <stdio.h>
-#include <ctype.h>
+
 
 int	main(void)
 {
-	const char *input = "  hello   world  this is 42 ";
+	const char *input = "            ";
 	char delim = ' ';
 	char **result = ft_split(input, delim);
 
@@ -92,4 +129,5 @@ int	main(void)
 	free(result);
 
 	return 0;
-}*/
+}
+*/

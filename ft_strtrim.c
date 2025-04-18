@@ -17,31 +17,34 @@
 ///RETURN: SUCCESS: Trimmed string;
 ///RETURN: FAILURE: Null;
 
+static int	ft_istrim(char c, const char *set)
+{
+	while (*set)
+		if (*set++ == c)
+			return (1);
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char		*trim;
-	size_t		start;
-	size_t		end;
-	size_t		i;
+	char	*dest;
+	int		i;
+	int		start;
+	int		end;
 
 	start = 0;
 	end = ft_strlen(s1) - 1;
-	i = 0;
-	if (!s1)
-		return (0);
-	if (!set)
-		return (ft_strdup(s1));
-	while (s1[start] && ft_strchr(set, s1[start]))
+	while (s1[start] && ft_istrim(s1[start], set))
 		start++;
-	while (s1[end] && ft_strchr(set, s1[end]))
+	while (end >= start && ft_istrim(s1[end], set))
 		end--;
-	trim = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!trim)
+	dest = ft_calloc((end - start + 2), sizeof(char));
+	if (!dest)
 		return (0);
-	while (s1[start] && start <= end)
-		trim[i++] = s1[start++];
-	trim[i] = '\0';
-	return (trim);
+	i = 0;
+	while (start <= end)
+		dest[i++] = s1[start++];
+	return (dest);
 }
 /*
 #include <stdio.h>

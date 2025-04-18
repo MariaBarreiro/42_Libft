@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 ///ft_putnbr_fd: Outputs the int 'n' to the specified file descriptor;
 ///int n: Integer to output;
 ///int fd: File descriptor on which to write:
@@ -19,8 +19,10 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	long int	nb;
-
+	
 	nb = n;
+	if (fd < 0)
+		return ;
 	if (nb < 0)
 	{
 		write (fd, "-", 1);
@@ -37,11 +39,18 @@ void	ft_putnbr_fd(int n, int fd)
 		write (fd, &nb, 1);
 	}
 }
+
 /*
+#include <fcntl.h>
+#include <limits.h>
 int	main()
 {
-	int	n = -2147483647;
-	int fd = 1;
-	ft_putnbr_fd(n, fd);
+	
+	//int	n = -2147483648;
+	int fd = open("banana", O_RDWR | O_CREAT);
+	ft_putnbr_fd(10000, fd);
+	ft_putnbr_fd(-10000, fd);
+	ft_putnbr_fd(INT_MAX, fd);
+	ft_putnbr_fd(INT_MIN, fd);
 	return (0);
 }*/
