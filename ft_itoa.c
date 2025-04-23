@@ -18,8 +18,8 @@
 ///RETURN: SUCCESS: The string representing the integer.
 ///RETURN: FAILURE: Null.
 
-char			*ft_char(char *str, unsigned int nb, long int len);
-unsigned int	ft_countdigits(int n);
+static char			*ft_char(char *str, unsigned int nb, long int len);
+static unsigned int	ft_countdigits(int n);
 
 char	*ft_itoa(int n)
 {
@@ -44,7 +44,12 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-unsigned int	ft_countdigits(int n)
+///ft_countdigits: Counts the number of digits, including space 
+///					for the negative sign;
+///int n: int to count the digits;
+///RETURN: Number of characters required to represent the int as a str;
+
+static unsigned int	ft_countdigits(int n)
 {
 	unsigned int	len;
 
@@ -59,7 +64,13 @@ unsigned int	ft_countdigits(int n)
 	return (len);
 }
 
-char	*ft_char(char *str, unsigned int nb, long int len)
+///ft_char: Convert unsigned int as a char str in REVERSE order;
+///char *str: Destination str buffer;
+///unsigned int nb: Int to convert;
+///long int len: Index where I start placing characters (from the end);
+///RETURN: Resulting str with the digits;
+
+static char	*ft_char(char *str, unsigned int nb, long int len)
 {
 	while (nb > 0)
 	{
@@ -76,7 +87,7 @@ int	main(void)
 	int	tests[] = {
 		0,
 		1,
-		-1,
+		-+1,
 		42,
 		-42,
 		123456,
@@ -86,7 +97,6 @@ int	main(void)
 	};
 	int	count = sizeof(tests) / sizeof(tests[0]);
 	int	i = 0;
-
 	while (i < count)
 	{
 		int n = tests[i];
@@ -97,4 +107,5 @@ int	main(void)
 		i++;
 	}
 	return 0;
-}*/
+}
+*/

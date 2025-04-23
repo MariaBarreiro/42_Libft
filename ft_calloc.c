@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdint.h> ///SIZE_MAX
 
 ///ft_calloc: Alloc memory for an array of nmemb size bytes each and zero it;
 ///size_t nmemb: Number of elements;
@@ -18,16 +19,15 @@
 ///RETURN: SUCESS: Pointer to the allocated memory;
 ///RETURN: FAILURE: Null;
 
+///SIZE_MAX / size!! - Protection from int overflow;
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	to_alloc;
 	int		*array;
 
-	if (nmemb == 0 || size == 0)
-	{
-		nmemb = 1;
-		size = 1;
-	}
+	if (size != 0 && nmemb > SIZE_MAX / size)
+		return (NULL);
 	to_alloc = nmemb * size;
 	array = (void *)malloc(to_alloc);
 	if (!array)

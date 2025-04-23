@@ -12,11 +12,12 @@
 
 #include "libft.h"
 
-size_t	ft_counter(const char *s, char c);
-char	**ft_alloc_split(const char *s, char c);
-size_t	ft_count(char const *s, int *start, size_t i, char c);
-void	free_split(char **split, size_t filled);
+static size_t	ft_counter(const char *s, char c);
+static char		**ft_alloc_split(const char *s, char c);
+static size_t	ft_count(char const *s, int *start, size_t i, char c);
+static int		free_split(char **split, size_t filled);
 
+///ft_split: Splits a str into an array of substrs based on a given delimiter;
 ///s: String to be split;
 ///c: Delimiter character/substrings NOT equal to c but separated by it;
 ///RETURN: SUCCESS: Array of new strings resulting from the split;
@@ -38,14 +39,13 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	while (s[i])
 	{
-		if (s[i])
-		{
-			i = ft_count(s, &start, i, c);
-			if (s[i] == '\0' && start == -1)
-				break ;
-			split[word++] = ft_substr(s, start, (i - start));
-			start = -1;
-		}
+		i = ft_count(s, &start, i, c);
+		if (s[i] == '\0' && start == -1)
+			break ;
+		split[word++] = ft_substr(s, start, (i - start));
+		if (!split[word - 1])
+			return (free_split(split, word), NULL);
+		start = -1;
 	}
 	split[word] = NULL;
 	return (split);
@@ -59,7 +59,7 @@ char	**ft_split(char const *s, char c)
 ///RETURN: SUCCESS: Index after the current word 
 ///					(to continue iterating in split);
 
-size_t	ft_count(char const *s, int *start, size_t i, char c)
+static size_t	ft_count(char const *s, int *start, size_t i, char c)
 {
 	*start = -1;
 	while (s[i] == c)
@@ -79,7 +79,7 @@ size_t	ft_count(char const *s, int *start, size_t i, char c)
 ///RETURN: SUCCESS: Allocated array of pointers;
 ///RETURN: FAILURE: Null;
 
-char	**ft_alloc_split(const char *s, char c)
+static char	**ft_alloc_split(const char *s, char c)
 {
 	char	**split;
 	size_t	count;
@@ -94,7 +94,7 @@ char	**ft_alloc_split(const char *s, char c)
 ///char c: Delimiter char;
 ///RETURN: SUCCESS: Word count;
 
-size_t	ft_counter(const char *s, char c)
+static size_t	ft_counter(const char *s, char c)
 {
 	size_t	i;
 	size_t	word_count;
@@ -117,17 +117,21 @@ size_t	ft_counter(const char *s, char c)
 ///char **split: Array of substrs;
 ///size_t filled: How many substrs were successfully allocated;
 
-void	free_split(char **split, size_t filled)
+static int	free_split(char **split, size_t filled)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < filled)
-		free(split[i++]);
-	free(split);
+	{
+		if (split[i])
+			free(split[i]);
+		i++;
+	}
+	return (free(split), 0);
 }
-
 /*
+
 #include <stdio.h>
 
 

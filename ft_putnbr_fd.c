@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 ///ft_putnbr_fd: Outputs the int 'n' to the specified file descriptor;
 ///int n: Integer to output;
 ///int fd: File descriptor on which to write:
