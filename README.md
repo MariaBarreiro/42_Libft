@@ -6,16 +6,6 @@
 
 ---
 
-## Table of Contents
-
-* [About 📌](#about)
-* [Functions 🔧](#functions)
-
-  * [Part 1 – Libc reimplementations](#part-1--libc-reimplementations)
-  * [Part 2 – Additional utilities](#part-2--additional-utilities)
-
----
-
 ## About 📌
 
 Create a static C library (`libft.a`) reimplementing common libc functions and adding utility routines. Strengthen memory management, string handling, and modular design.
