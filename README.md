@@ -1,6 +1,6 @@
 # Libft
 
-![Score](https://img.shields.io/badge/Score-100%2F100-lightgrey) ![C](https://img.shields.io/badge/C-96.4%25-lightgrey) ![Makefile](https://img.shields.io/badge/Makefile-3.6%25-lightgrey) 
+![Score](https://img.shields.io/badge/Score-100%2F100-lightgrey) ![C](https://img.shields.io/badge/C-94.3%25-lightgrey) ![Makefile](https://img.shields.io/badge/Makefile-5.7%25-lightgrey) 
 
 
 > *Your first custom C library*
